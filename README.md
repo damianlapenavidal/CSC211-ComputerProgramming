@@ -4,9 +4,9 @@ This repository contains my coursework for **CSC211: Computer Programming with C
 
 ## 📁 Contents
 
-- Weekly labs and assignments in C++
-- Final project
-- Practice code and class exercises
+- Assignments
+- Weekly labs
+- Micro Challenges
 
 ## 🛠️ Tools & Environment
 
@@ -19,7 +19,3 @@ This repository contains my coursework for **CSC211: Computer Programming with C
 ## 🚨 Disclaimer
 
 This repository is for personal academic reference. All work is my own unless otherwise noted. Please do not copy or submit any of this code for your own coursework.
-
-## 📄 License
-
-[Choose your preferred license here](https://choosealicense.com/), or leave the repo unlicensed if you want it to be private or restricted.
