@@ -1,0 +1,265 @@
+1. Create a void function called square that accepts an integer pointer and stores the square of that number into the passed address.
+Print this number in main.
+----------------
+#include <iostream>
+
+
+void square(int* a) {
+   *a = (*a) * (*a);
+}
+
+
+int main() {
+   int num = 7;
+
+
+   square(&num);
+
+
+   std::cout << num << std::endl;
+   return 0;
+}
+
+2. Write a void function countEvens that accepts an array and an integer pointer. The pointer should be used to count the # of even 
+numbers in the array. Be sure to de-reference properly!
+----------------
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+
+void countEvens(int *a, int n){
+    int d;
+    d = 0;
+    // d serves as the even count
+    for(int i = 0 ; i < n ; i++){
+        if(arr[i] % 2 == 0){
+            d++
+        }
+    }
+}
+
+
+int main(){
+
+
+    int array[5];
+    countEvens(array, 5)
+    return 0;
+}
+
+3. What does the following code output? (You can assume it compiles).
+----------------
+35
+
+4. What does the following code output? (You can assume it compiles).
+----------------
+1: a=21, b=12
+2: a=21, b=22
+3: a=1, b=3
+
+5. Re-write the fillArray() function in the example above to store a multiplication table (without the headers) into arr. e.g. for 
+arrSize = 3 the array should be filled as:
+1 2 3
+2 4 6
+3 6 9
+----------------
+#include <iostream>
+
+
+const int arrSize = 5;
+
+
+void fillArray(int arr[][arrSize]);
+void printArray(int arr[][arrSize]);
+
+
+int main()
+{
+   int myArr[arrSize][arrSize];
+
+
+   printArray(myArr);
+   fillArray(myArr);
+   printArray(myArr);
+}
+
+
+void fillArray(int arr[][arrSize]) {
+   for (int i = 0; i < arrSize; i++) {
+       for (int j = 0; j < arrSize; j++) {
+           arr[i][j] = (i + 1) * (j + 1);
+       }
+   }
+}
+
+
+void printArray(int arr[][arrSize]) {
+   for (int i = 0; i < arrSize; i++) {
+       for (int j = 0; j < arrSize; j++) {
+           std::cout << arr[i][j] << " ";
+       }
+       std::cout << std::endl;
+   }
+   std::cout << std::endl;
+}
+
+6. Write a program that will store 3 exam grades for 4 students as amultidimensional array, and a function to calculate the average 
+for each student, and another function to calculate the average for each exam.
+----------------
+#include <iostream>
+using namespace std;
+
+
+const int numStudents = 4;
+const int numExams = 3;
+
+
+void studentTotalAverages(int grades[][numExams]);
+void examTotalAverages(int grades[][numExams]);
+
+
+
+
+int main() {
+   int grades[numStudents][numExams] = {
+       {85, 90, 88},
+       {78, 82, 80},
+       {92, 95, 94},
+       {70, 75, 72}
+   };
+
+
+   studentTotalAverages(grades);
+   examTotalAverages(grades);
+
+
+   return 0;
+}
+
+
+void studentTotalAverages(int grades[][numExams]) {
+   for (int i = 0; i < numStudents; i++) {
+       int sum = 0;
+       for (int j = 0; j < numExams; j++) {
+           sum += grades[i][j];
+       }
+       double average = sum / static_cast<double>(numExams);
+       std::cout << average << std::endl;
+   }
+   std::cout << std::endl;
+}
+void examTotalAverages(int grades[][numExams]) {
+   for (int j = 0; j < numExams; j++) {
+       int sum = 0;
+       for (int i = 0; i < numStudents; i++) {
+           sum += grades[i][j];
+       }
+       double average = sum / static_cast<double>(numStudents);
+       std::cout << average << std::endl;
+   }
+   std::cout << std::endl;
+}
+
+7. Consider the below code and describe what the delete[] command is doing. What would happen if we only used delete?
+----------------
+<delete[]> is used to manually freed an array of elements, specifically 5 elements. <delete> would only delete one element of the array, 
+therefore the other elements will remain in memory.
+
+8. Write a program that accepts a number of data points n, stores them into an array, and uses a pointer max that will point to the 
+largest value.
+----------------
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+
+int main(){
+
+
+    int n;
+    std::cin >> n;
+   
+    int* count = new int[n];
+    for(int i = 0 ; i < n ; ++i){
+        std::cin >> count[i];
+    }
+
+
+    int* max = &count[0];
+
+
+    for(int i = 1 ; i < n ; ++i){
+        if(*max < count[i]){
+            max = &count[i];
+        }
+    }
+
+
+    std::cout << "Largest value is: " << *max;
+    return 0;
+}
+
+9. Create a void function called findStats that will calculate the mean, median, and mode of an array of ints of size n. Store these 
+values in an array and return this array from the function (note: there is a reason this question is in the dynamic memory section).
+----------------
+void findStats(int size, int original_array[], int *&result) {
+    // Calculate Mean
+    int mean = 0;
+    for (int i = 0; i < size; ++i) {
+        mean += original_array[i];
+    }
+    mean /= size;
+
+    // Calculate Mode
+    int mode = original_array[0];
+    int maxCount = 0;
+
+    for (int i = 0; i < size; ++i) {
+        int count = 0;
+        for (int j = 0; j < size; ++j) {
+            if (original_array[j] == original_array[i]) {
+                count++;
+            }
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            mode = original_array[i];
+        }
+    }
+
+    // Calculate Median
+    double median = 0;
+    for (int i = 0; i < size; ++i) {
+        int smallerCount = 0;
+        int equalCount = 0;
+
+        for (int j = 0; j < size; ++j) {
+            if (original_array[j] < original_array[i]) {
+                smallerCount++;
+            } else if (original_array[j] == original_array[i]) {
+                equalCount++;
+            }
+        }
+
+        if (size % 2 == 1 && smallerCount == size / 2) {
+            median = original_array[i]; // For odd size
+            break;
+        }
+
+        if (size % 2 == 0 && (smallerCount == size / 2 - 1 || smallerCount == size / 2) && equalCount > 0) {
+            median += original_array[i];
+            equalCount--;
+            if (median > 0) {
+                median /= 2; // For even size
+                break;
+            }
+        }
+    }
+
+    // Store results in a dynamically allocated array
+    result = new int[3];
+    result[0] = mean;    // Mean
+    result[1] = median;  // Median
+    result[2] = mode;    // Mode
+}

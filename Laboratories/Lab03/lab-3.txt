@@ -1,0 +1,48 @@
+Question 1. For each of the number systems discussed, how many unique values can be represented by 4 digits from that system?
+-----------
+Binary: From 0000 to 1111 (16 values)
+Decimal: From 0000 to 9999 (10000 values)
+Hexadecimal: From 0000 to FFFF (65536 values)
+
+Question 2. Convert 74F8E9DA Hexadecimal to Decimal.
+-----------
+1962469850
+
+Question 3. Convert 11011010101 Binary to Hexadecimal.
+-----------
+6D5
+
+Question 4. Convert 628 Decimal to Binary.
+-----------
+1001110100
+
+Question 5. Convert 128472481 Decimal to Hexadecimal.
+-----------
+7A855A1
+
+Question 6. Convert 74F8E9DA Hexadecimal to Binary.
+-----------
+01110100111110001110100111011010
+
+Question 7. Convert 11011110101 Binary to Decimal.
+-----------
+1781
+
+Question 8. Debugging
+-----------
+The error is in the if condition "if(test = 10)", it will not check the equality between test and its value, 
+we could fix it by adding another "=", therefore the correct way is "(test == 10)"
+
+Question 9. Debugging
+-----------
+The error is in the if condition "if test = 10", it will not understand the condition, 
+we could fix it by adding parenthesis to the condition statement, therefore the correct way is "if(test == 10)"
+
+Question 10. Debugging
+-----------
+The error is in the conditional branch, it will not differenciate the if and else conditions, we could fix it 
+by adding curly brakets between the statements to execute if condition is true, therefore the correct way is 
+if (test == 0) {
+    std::cout << "Hello World" << std::endl;
+    std::cout << "Hello World2" << std::endl;
+}

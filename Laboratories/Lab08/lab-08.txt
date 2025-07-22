@@ -1,0 +1,9 @@
+Question 1. Given the above base cases, what is the value of F6, the 6th fibonacci number.
+--------------
+Given the above base cases, what is the value of F6, the 6th fibonacci number.
+The 6th fibonacci number is 8.
+
+Question 2. What would the function call tree look like for a call of fib(6)? (It is encouraged to actually draw out the tree on paper but there is no need to try and express this image in your document. Just describe the shape of the tree)
+--------------
+The tree starts with the initial case which is 6 in our question. Each branch is the two sub calls, 
+for example just after 6 would be fib(5) and fib(4). This continues until the tree reaches the base case of fib(1) and fib(0). 

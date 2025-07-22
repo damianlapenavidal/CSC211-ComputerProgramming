@@ -1,0 +1,59 @@
+Question 1: What is happening when the stack grows?
+------------
+Happens when a recursive call is made which adds a new function to the call stack. Fib(6) is called which equals fib(5) + fib(4),
+and then we add another stack because fib(5) = fib(4) + fib(3). You do that again until you reach fib(2) which is fib(1) + fib(0),
+which is given to us 0 + 1 = 1.
+
+Question 2: What is happening when the stack shrinks?
+------------
+After the base cases are reached, when n<2, the recursion starts shrinking. As the function returns the results the stack begins
+to shrink by removing function frames one by one.
+
+Question 3: Determine what the following function does and draw a recursion tree for it when n = 6:
+------------
+n = 6 therefore our output is foo(3) + foo(4) + foo(5).
+foo(5) = foo(2) + foo(3) + foo(4).
+foo(4) = foo(1) + foo(2) + foo(3).
+foo(3) = foo(0) + foo(1) + foo(2) (We know when n<3 we return n).
+foo(3) = 0 + 1 + 2 = 3. Now that we have foo(3) we trace the stack back up
+foo(4) = 1 + 2 + 3 = 6.
+foo(5) = 2 + 3 + 6 = 11.
+foo(6) = 3 + 6 + 11 = 20.
+
+Question 3: Given the following function, draw a recursion tree for n = 5, and indicate the status of the stack after 3 recursive calls(i.e. NOT including the call that would have been made in main):
+------------
+Status of stack after 3 recursive calls:
+fact(5) = 5 * fact(4)
+fact(4) = 4 * fact(3)
+fact(3) = 3 * fact(2)
+fact(2) = 2 * 1
+
+Question 4: Given the following function, draw a recursion tree for n = 12345, and indicate the status of the stack after 4 recursive calls(i.e. NOT including the call that would have been made in main):
+------------
+After the 4th recursion call the call stack is sum_digits(1).
+sum_digits(12345) = 5 + sum_digits(1234)
+sum_digits(1234) = 4 + sum_digits(123)
+sum_digits(123) = 3 + sum_digits(12)
+sum_digits(12) = 2 + sum_digits(1)
+sum_digits(1) = 1 + sum_digits(0)
+
+Question 5: Given the following function, draw a recursion tree for str = "tacocat", and indicate the status of the stack after 2 recursive calls(i.e. NOT including the call that would have been made in main):
+------------
+palindrome("tacocat")
+it sees t == t and subtracts 2 off the length
+therefore first recursion call is
+palindrome("acoca")
+sees that a == a so it subtracts 2 from the index
+therefore second recursion call is
+palindrome("coc")
+
+Question 6: Given the following function, draw a recursion tree for arr = [1, 2, 3, 4, 5, 6, 2] and n = 7, and indicate the status of the stack after 3 recursive calls(i.e. NOT including the call that would have been made in main):
+------------
+arr = [1,2,3,4,5,6,2]
+First call is is_sorted(arr, 7)
+arr[0] < arr[1], therefore is_sorted(arr + 1, 6)
+[2,3,4,5,6,2].
+arr[1] < arr[2], therefore is_sorted(arr + 1, 5)
+[3,4,5,6,2].
+arr[2] < arr[3], therfore is_sorted(arr + 1, 4)
+[4,5,6,2].

@@ -1,0 +1,175 @@
+✅ Question 1: Write a class that creates Cartesian coordinates in a 3D space (x, y, z). Below are the class member variables and methods you need to implement.
+---------------
+class Point {
+    private:
+        int x;
+        int y;
+        int z;
+
+    public:
+        //Constructs a point object with X, Y, Z properties
+        Point(int someX, int someY, int someZ);
+        //Sets the X, Y, and Z properties of a point Object
+        void setX(int someX);
+        void setY(int someY);
+        void setZ(int someZ);
+        //Gets the X, Y, and Z properties from a point Object
+        int getX();
+        int getY();
+        int getZ();
+        //Returns a cartesian coordinate representation of a point Object
+        // aka = (x,y,z)
+        std::string toCord();
+        //Calculates the Euclidean Distance of two points
+        double euDistance (Point p2);
+};
+
+Point::Point(int someX, int someY, int someZ){
+    x = someX;
+    y = someY;
+    z = someZ;
+}
+
+void Point::setX(int someX){
+    x = someX;
+}
+
+void Point::setY(int someY){
+    y = someY;
+}
+
+void Point::setZ(int someZ){
+    z = someZ;
+}
+
+int Point::getX(){
+    return x;
+}
+
+int Point::getY(){
+    return y;
+}
+
+int Point::getZ(){
+    return z;
+}
+
+std::string Point::toCord(){
+    std::string X = std::to_string(x);
+    std::string Y = std::to_string(y);
+    std::string Z = std::to_string(z);
+
+    return "(" + X + "," + Y + "," + Z + ")";
+}
+
+double Point::euDistance (Point p2){
+    int d1 = (x-p2.x) * (x-p2.x);
+    int d2 = (y-p2.y) * (y-p2.y);
+    int d3 = (z-p2.z) * (z-p2.z);
+
+    return sqrt(d1 + d2 + d3);
+}
+
+✅ Question 2: Write a 'car' class that creates car objects with the below properties and make 3 different car objects initialized with different properties.
+---------------
+class Car{
+
+
+    private:
+        std::string make;
+        std::string model;
+        std::string color;
+        int year;
+        double mileage;
+
+
+    public:
+        //Constructs a car object
+        Car(std::string somemake, std::string somemodel, std::string somecolor, int someyear, double somemileage);
+
+
+        //Setters for objects of type car
+        void setMake(std::string someMake);
+        void setModel(std::string someModel);
+        void setColor(std::string someColor);
+        void setYear(int someYear);
+        void setMileage(double someMileage);
+
+
+        //Getters for objects of type car
+        std::string getMake();
+        std::string getModel();
+        std::string getColor();
+        int getYear();
+        double getMileage();
+
+
+        //Prints all member variables to console
+        void printDetails();
+};
+
+Car::Car(std::string somemake, std::string somemodel, std::string somecolor, int someyear, double somemileage){
+    make = somemake;
+    model = somemodel;
+    color = somecolor;
+    year = someyear;
+    mileage = somemileage;
+}
+
+void Car::setMake(std::string somemake){
+    make = somemake;
+}
+
+
+void Car::setModel(std::string somemodel){
+    model = somemodel;
+}
+
+
+void Car::setColor(std::string somecolor){
+    color = somecolor;
+}
+
+
+void Car::setYear(int someyear){
+    year = someyear;
+}
+
+
+void Car::setMileage(double somemileage){
+    mileage = somemileage;
+}
+
+std::string Car::getMake(){
+    return make;
+}
+
+std::string Car::getModel(){
+    return model;
+}
+
+std::string Car::getColor(){
+    return color;
+}
+
+int Car::getYear(){
+    return year;
+}
+
+double Car::getMileage(){
+    return mileage;
+}
+
+void Car::printDetails(){
+    std::cout << getMake() << std::endl;
+    std::cout << getModel() << std::endl;
+    std::cout << getColor() << std::endl;
+    std::cout << getYear() << std::endl;
+    std::cout << getMileage() << std::endl;
+}
+
+✅ Question 3: Visit this class definition and use it to create different bitmap objects.
+---------------
+bitmap_image image1(200,200);
+bitmap_image image2("input.bmp");
+bitmap_image image3();

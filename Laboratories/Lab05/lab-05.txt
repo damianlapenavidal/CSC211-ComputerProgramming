@@ -1,0 +1,207 @@
+Question 1: What is the output of the above code? Explain why the values of a and ref are the same.
+
+a: 5, ref: 5
+a: 10, ref: 10
+
+a is initialized to 5 and ref is refered to a. Therefore, they both have the same value. When ref 
+changes to 10, a also changes to 10.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 3: How does the swap function modify the values of a and b? What would happen if the parameters were not references?
+
+The function refers to a and b as x and y respectively, then directly exchanges their value using a 
+variable "temp" that equals to x. If the parameters were not references, the changes would be made 
+only locally within the function.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 4: Trace the execution of the above code. What is the value of num after the addOne function is called? Why?
+
+The value is 6 because the reference directly changes the value of num.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 5: Can a reference be null? Explain why or why not.
+
+No, a reference in C++ cannot be null. Unlike pointers, which can be assigned nullptr, references must always be bound 
+to a valid object at the moment of initialization. ref must reference a valid int and nullptr is not an int.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Problem 1: Write a function that takes a reference to an array and an integer representing the arrays size. 
+The function should set all elements of the array to zero.
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+void setArrayToZero(int arr, int size){
+    for (int i = 0 ; i < size ; i++) {
+        arr[i] = 0;
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Problem 2: Write a function that takes two references to integers and returns their product. 
+The result should be stored in a third reference parameter.
+
+int Multiply (int& a, int& b, int& result) {
+    result = a * b;
+    return result;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Problem 3: Write a function that takes a reference to an integer and a reference to a string. 
+If the integer is even, set the string to "Even". If the integer is odd, set the string to "Odd".
+
+void EvenOdd (int& a, std::string& b) {
+    if ( a % 2 == 0){
+        b = "Even";
+    } else if ( a % 2 != 0){
+        b = "Odd";
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Problem 4: Write a function that swaps the values of two double variables using references. 
+Test your function with different values.
+
+void swap(double& x, double& y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Problem 5: Write a program that uses a reference to modify the value of a variable declared in the main function. 
+Ensure that the changes are reflected in the main function.
+
+#include <iostream>
+
+
+int modValue(int &a) {
+   a = 35;
+   return a;
+}
+
+
+int main() {
+   int num = 0;
+   std::cin >> num;
+
+
+   modValue(num);
+   std::cout << num << std::endl;
+
+
+   return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 3: Examine what was printed out to the console. Where did this value come from? 
+Describe how you think the call stack processed each operation (what was the order in which values were added to the stack?)
+
+It came from adding 1 to 0 and then adding 2 to 1.
+First, result became 1 after adding 1 to 0, then it became 3 after adding 2. Finally, it printed result, which was 3.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 4: Were you surprised by the activity in the stack on pythonTutor? What was different from your original guess?
+
+Did not realize that it was going back to plus_one to add 2.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 5. What is the return type of the main function?
+
+Integer data type.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 6. What are the parameters to the main function?
+
+No parameters.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 7. What do you think it means for a fuction to return void?
+
+It does not have a return value.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 8. Do you think that void functions can use return statements?
+
+Yes, in order to exit the function early, but will not return a value.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 9. Copy the following code into your IDE, it should throw a syntax error at compile time. What does this error mean to you?
+
+The run function declaration is below the main function.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 10. What is the output of the above code?
+
+5 11 14
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 11. Write a function that accepts 3 integers: a, b, and c. If a is even, return the sum of all ints between b and c. 
+Otherwise, return the product of all ints between b and c.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 12. Write a function that accepts a decimal number and returns that number in Binary.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 13. Write a function that accepts an integer n and returns the # of digits. Ex. 1234 returns 4.
+
+int Num_Digits(int& n) {
+    int digits = 0;
+    
+    n = std::abs(n);
+
+    while (n > 0) {
+        n /= 10;
+        digits++;
+    }
+
+    return digits;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 14. Write a function that accepts an integer n and returns the reverse of the integer. Ex. 1234 returns 4321. 
+Hint: Use your solution from Question 13 to help you solve this!
+
+int Reverse_Num(int& orig) {
+    
+    int rev = 0;
+
+    while (orig != 0) {
+        int digit = orig % 10;
+        rev  = rev * 10 + digit;
+        orig /= 10;
+    }
+    return rev;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Question 15. Write a function that accepts an integer n and displays the pyramid from Lab 4 program8.cpp with n rows. 
+Note: This will cause the numbers to enter double digits, which will throw off the pyramid. Bound the output of the 
+print statements between 0 and 9. Ex. 11->1, 12->2, 37->7, 50->0.
+
